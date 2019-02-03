@@ -1,0 +1,21 @@
+<%- include("partials/header") %>
+ <% function text_truncate(str, length, ending) {%>
+    <% if (length == null) {%>
+      <%length = 100;%>
+  <%  }%>
+  <%  if (ending == null) {%>
+  <%  ending = '...';%>
+  <% }%>
+  <%  if (str.length > length) {%>
+  <%    return str.substring(0, length - ending.length) + ending;%>
+  <%  } else {%>
+  <%    return str;%>
+  <%  }%>
+<%  }%>
+<h1>Home</h1>
+<p><%= homeStartingContent %></p>
+<% postsArr.forEach(function(el){%>
+  <h1><%= el.title %></h1>
+  <p><%= text_truncate(el.value,100) %><a href="<%=el.url%>">Read More</a></p>
+<% }) %>
+<%- include("partials/footer") %>
